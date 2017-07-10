@@ -41,18 +41,35 @@
                                 </items>
                             </toolbar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Yhm-9F-cbY">
-                                <rect key="frame" x="16" y="20" width="343" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="603"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                             </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" usesAttributedText="YES" allowsEditingTextAttributes="YES" clearsOnBeginEditing="YES" minimumFontSize="19" translatesAutoresizingMaskIntoConstraints="NO" id="gVp-hS-aPw">
+                                <rect key="frame" x="16" y="552" width="343" height="21"/>
+                                <attributedString key="attributedText"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" usesAttributedText="YES" allowsEditingTextAttributes="YES" clearsOnBeginEditing="YES" minimumFontSize="19" translatesAutoresizingMaskIntoConstraints="NO" id="BSN-IX-5Ir">
+                                <rect key="frame" x="16" y="51" width="343" height="21"/>
+                                <attributedString key="attributedText"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="bOi-UJ-DT0" firstAttribute="top" secondItem="gVp-hS-aPw" secondAttribute="bottom" constant="50" id="8su-Q1-nVN"/>
                             <constraint firstAttribute="trailing" secondItem="bOi-UJ-DT0" secondAttribute="trailing" id="A3g-EA-8y9"/>
+                            <constraint firstItem="gVp-hS-aPw" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="EzI-Rp-1vi"/>
+                            <constraint firstItem="gVp-hS-aPw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Fe1-fQ-WB5"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bOi-UJ-DT0" secondAttribute="bottom" id="Ly8-VG-eeO"/>
-                            <constraint firstItem="Yhm-9F-cbY" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Olp-SK-eHX"/>
+                            <constraint firstItem="Yhm-9F-cbY" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="16" id="Olp-SK-eHX"/>
                             <constraint firstItem="bOi-UJ-DT0" firstAttribute="top" secondItem="Yhm-9F-cbY" secondAttribute="bottom" id="PVv-A6-aUM"/>
-                            <constraint firstItem="Yhm-9F-cbY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Q5l-bE-veN"/>
+                            <constraint firstItem="Yhm-9F-cbY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="Q5l-bE-veN"/>
                             <constraint firstItem="bOi-UJ-DT0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="XUH-C3-X9i"/>
+                            <constraint firstItem="BSN-IX-5Ir" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="hhy-bV-TeC"/>
+                            <constraint firstItem="BSN-IX-5Ir" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="31" id="i8T-ZU-mkn"/>
                             <constraint firstItem="bOi-UJ-DT0" firstAttribute="top" secondItem="Yhm-9F-cbY" secondAttribute="bottom" id="kwQ-v2-ddI"/>
+                            <constraint firstItem="BSN-IX-5Ir" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="piz-KS-efG"/>
                             <constraint firstItem="Yhm-9F-cbY" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="wce-H3-LyX"/>
                         </constraints>
                     </view>
@@ -60,6 +77,8 @@
                         <outlet property="bt_getFromCam" destination="Gg2-OR-yod" id="3Sn-tP-cDU"/>
                         <outlet property="bt_getFromLib" destination="cya-Zm-rdo" id="s7E-dy-OZc"/>
                         <outlet property="iv_image" destination="Yhm-9F-cbY" id="Go4-bJ-vgM"/>
+                        <outlet property="tf_bottom" destination="gVp-hS-aPw" id="M7N-k1-Tap"/>
+                        <outlet property="tf_top" destination="BSN-IX-5Ir" id="6dN-Ks-iiL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
