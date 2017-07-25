@@ -49,34 +49,56 @@
                                 <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NwK-fb-600">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem id="did-7P-lna">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="6fz-19-W0U">
+                                            <connections>
+                                                <action selector="ac_share:" destination="BYZ-38-t0r" id="wPG-L6-vbJ"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="OrQ-DI-KjR">
+                                            <connections>
+                                                <action selector="ac_cancel:" destination="BYZ-38-t0r" id="Bjc-1N-95s"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" usesAttributedText="YES" allowsEditingTextAttributes="YES" clearsOnBeginEditing="YES" minimumFontSize="19" translatesAutoresizingMaskIntoConstraints="NO" id="BSN-IX-5Ir">
-                                <rect key="frame" x="16" y="51" width="343" height="21"/>
+                                <rect key="frame" x="16" y="77" width="343" height="21"/>
                                 <attributedString key="attributedText"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Yhm-9F-cbY" firstAttribute="leading" secondItem="NwK-fb-600" secondAttribute="leading" id="60P-t1-jOb"/>
+                            <constraint firstItem="Yhm-9F-cbY" firstAttribute="trailing" secondItem="NwK-fb-600" secondAttribute="trailing" id="6Wo-4Z-qU2"/>
                             <constraint firstItem="bOi-UJ-DT0" firstAttribute="top" secondItem="gVp-hS-aPw" secondAttribute="bottom" constant="50" id="8su-Q1-nVN"/>
                             <constraint firstAttribute="trailing" secondItem="bOi-UJ-DT0" secondAttribute="trailing" id="A3g-EA-8y9"/>
                             <constraint firstItem="gVp-hS-aPw" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="EzI-Rp-1vi"/>
                             <constraint firstItem="gVp-hS-aPw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Fe1-fQ-WB5"/>
+                            <constraint firstItem="Yhm-9F-cbY" firstAttribute="leading" secondItem="bOi-UJ-DT0" secondAttribute="leading" id="HLO-7H-J9f"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bOi-UJ-DT0" secondAttribute="bottom" id="Ly8-VG-eeO"/>
-                            <constraint firstItem="Yhm-9F-cbY" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="16" id="Olp-SK-eHX"/>
-                            <constraint firstItem="bOi-UJ-DT0" firstAttribute="top" secondItem="Yhm-9F-cbY" secondAttribute="bottom" id="PVv-A6-aUM"/>
-                            <constraint firstItem="Yhm-9F-cbY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-16" id="Q5l-bE-veN"/>
                             <constraint firstItem="bOi-UJ-DT0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="XUH-C3-X9i"/>
+                            <constraint firstItem="Yhm-9F-cbY" firstAttribute="trailing" secondItem="bOi-UJ-DT0" secondAttribute="trailing" id="dkA-JX-CBD"/>
                             <constraint firstItem="BSN-IX-5Ir" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="hhy-bV-TeC"/>
-                            <constraint firstItem="BSN-IX-5Ir" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="31" id="i8T-ZU-mkn"/>
-                            <constraint firstItem="bOi-UJ-DT0" firstAttribute="top" secondItem="Yhm-9F-cbY" secondAttribute="bottom" id="kwQ-v2-ddI"/>
+                            <constraint firstItem="BSN-IX-5Ir" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="57" id="i8T-ZU-mkn"/>
+                            <constraint firstItem="Yhm-9F-cbY" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="mwP-k2-ql9"/>
+                            <constraint firstItem="Yhm-9F-cbY" firstAttribute="top" secondItem="NwK-fb-600" secondAttribute="top" id="o0w-3X-XvQ"/>
                             <constraint firstItem="BSN-IX-5Ir" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="piz-KS-efG"/>
-                            <constraint firstItem="Yhm-9F-cbY" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="wce-H3-LyX"/>
+                            <constraint firstItem="Yhm-9F-cbY" firstAttribute="bottom" secondItem="bOi-UJ-DT0" secondAttribute="top" id="scb-DW-xBX"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="bt_getFromCam" destination="Gg2-OR-yod" id="3Sn-tP-cDU"/>
                         <outlet property="bt_getFromLib" destination="cya-Zm-rdo" id="s7E-dy-OZc"/>
+                        <outlet property="bt_share" destination="6fz-19-W0U" id="TcJ-C2-RvM"/>
                         <outlet property="iv_image" destination="Yhm-9F-cbY" id="Go4-bJ-vgM"/>
+                        <outlet property="nv_navigation" destination="NwK-fb-600" id="PMV-5B-KH1"/>
+                        <outlet property="tb_sources" destination="bOi-UJ-DT0" id="rse-MB-USY"/>
                         <outlet property="tf_bottom" destination="gVp-hS-aPw" id="M7N-k1-Tap"/>
                         <outlet property="tf_top" destination="BSN-IX-5Ir" id="6dN-Ks-iiL"/>
                     </connections>
