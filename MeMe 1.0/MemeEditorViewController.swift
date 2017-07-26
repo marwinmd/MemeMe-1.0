@@ -8,15 +8,17 @@
 
 import UIKit
 
-class ViewController:UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate{
+class MemeEditorViewController:UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate{
     
-      let imagePicker = UIImagePickerController()
+    let imagePicker = UIImagePickerController()
+    let TOP_CAPTION : String = "TOP"
+    let BOTTOM_CAPTION : String = "BOTTOM"
     
     let memeTextAttributes:[String:Any] = [
         NSStrokeColorAttributeName: UIColor.black,
         NSForegroundColorAttributeName: UIColor.white,
         NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        NSStrokeWidthAttributeName: -1.0]
+        NSStrokeWidthAttributeName: -3.6]
     
     @IBOutlet weak var tf_top: UITextField!
     @IBOutlet weak var tf_bottom: UITextField!
@@ -45,45 +47,41 @@ class ViewController:UIViewController, UIImagePickerControllerDelegate, UINaviga
     }
     
     @IBAction func ac_cancel(_ sender: Any) {
-       
-        styleTextField(textfield: tf_top, caption: "TOP")
-        styleTextField(textfield: tf_bottom, caption: "BOTTOM")
+        
+        tf_top.text = TOP_CAPTION
+        tf_bottom.text = BOTTOM_CAPTION
         iv_image.image = nil
         
     }
     
     @IBAction func ac_getFromLib(_ sender: Any) {
-       
-        imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
-        present(imagePicker, animated: true, completion: nil)
+        pickAnImageFrom(sourceType: .photoLibrary)
     }
     
     @IBAction func ac_getFromCam(_ sender: Any) {
-        
+        pickAnImageFrom(sourceType: .camera)
+    }
+    
+    func pickAnImageFrom(sourceType source: UIImagePickerControllerSourceType) {
         imagePicker.delegate = self
-        imagePicker.sourceType = .camera
+        imagePicker.sourceType = source
         present(imagePicker, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
         bt_share.isEnabled = false
-        
-        styleTextField(textfield: tf_top, caption: "TOP")
-        styleTextField(textfield: tf_bottom, caption: "BOTTOM")
-        
-        
+        styleTextField(textfield: tf_top, caption: TOP_CAPTION)
+        styleTextField(textfield: tf_bottom, caption: BOTTOM_CAPTION)
         iv_image.backgroundColor = UIColor.darkGray
-        bt_getFromCam.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
     }
     
     override func viewWillAppear(_ animated: Bool){
         
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
+        bt_getFromCam.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -136,8 +134,7 @@ class ViewController:UIViewController, UIImagePickerControllerDelegate, UINaviga
     func keyboardWillHide(_ notification:Notification){
         
         if tf_bottom.isEditing {
-            view.frame.origin.y += getKeyboardHeight(notification)
-        }
+           view.frame.origin.y = 0        }
         
     }
     
@@ -155,15 +152,14 @@ class ViewController:UIViewController, UIImagePickerControllerDelegate, UINaviga
     }
     
     func unsubscribeFromKeyboardNotifications() {
-       
+        
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
     }
     
     func generateMemedImage() -> UIImage {
-    
-        nv_navigation.isHidden = true
-        tb_sources.isHidden = true
+        
+        hideTopAndButtonBars(hide: true)
         
         // Render view to an image
         UIGraphicsBeginImageContext(view.frame.size)
@@ -171,18 +167,22 @@ class ViewController:UIViewController, UIImagePickerControllerDelegate, UINaviga
         let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
-
-        nv_navigation.isHidden = false
-        tb_sources.isHidden = false
+        hideTopAndButtonBars(hide: false)
         
         return memedImage
+        
+    }
     
+    func hideTopAndButtonBars(hide: Bool) {
+        nv_navigation.isHidden = hide
+        tb_sources.isHidden = hide
+
     }
     
     func saveMeme(memedImage: UIImage) {
         
         _ = Meme(topText: tf_top.text!, bottomText: tf_bottom.text!, image: iv_image.image!, memedImage: memedImage)
     }
-
+    
     
 }
